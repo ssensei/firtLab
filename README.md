@@ -50,9 +50,93 @@
 Ход работы:
 - Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
 Скриншоты выполнения:
-![изображение](https://user-images.githubusercontent.com/61794638/192369638-d95ecf13-1405-4269-a051-116459e5db7f.png)
-![изображение](https://user-images.githubusercontent.com/61794638/192369621-073fa0bd-ae5d-4455-b6d8-a8396a4c579b.png)
-![изображение](https://user-images.githubusercontent.com/61794638/192369650-8cba6d77-5233-442e-b22a-7b768316a225.png)
+import numpy as np
+import gspread
+import numpy as np
+
+gc = gspread.service_account(filename='unitydata-365217-b1abff74e3ad.json')
+sh = gc.open("Sheet1")
+
+x = [3,21,22,34,54,34,55,67,89,99]
+x = np.array(x)
+y = [2,22,24,65,79,82,55,130,150,199]
+y = np.array(y)
+
+def model(a,b,x):
+    return a*x+b
+def loss_function(a,b,x,y):
+    num = len(x)
+    prediction=model(a,b,x)
+    return (0.5/num)*(np.square(prediction-y)).sum()
+def optimaze(a,b,x,y):
+    num = len(x)
+    prediction=model(a,b,x)
+    da = (1.0/num)*((prediction-y)*x).sum()
+    db = (1.0/num)*((prediction-y)).sum()
+    a = a- Lr*da
+    b = b- Lr*db
+    return a,b
+def iterate(a,b,x,y,times):
+    for i in range(times):
+        a,b = optimaze(a,b,x,y)
+    return a,b
+
+a = np.random.rand(1)
+print(a)
+b = np.random.rand(1)
+print(b)
+Lr = 0.000001
+
+i=1
+
+a,b=iterate(a,b,x,y,1)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
+a,b=iterate(a,b,x,y,2)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
+a,b=iterate(a,b,x,y,3)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
+a,b=iterate(a,b,x,y,4)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
+a,b=iterate(a,b,x,y,5)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
+a,b=iterate(a,b,x,y,1000)
+prediction = model(a,b,x)
+loss = loss_function(a,b,x,y)
+sh.sheet1.update(('A' + str(i)), str(a))
+sh.sheet1.update(('B' + str(i)), str(b))
+sh.sheet1.update(('C' + str(i)), str(loss))
+i = i+1
+
 
 ## Задание 3
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
