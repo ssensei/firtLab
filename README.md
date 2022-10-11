@@ -35,6 +35,14 @@
 ![изображение](https://user-images.githubusercontent.com/61794638/194843430-d870f7ee-e939-4398-8253-6f69d49082a8.png)
 ####Скриншот с демонтрацией кода для создания данных в GoogleSheets
 ![изображение](https://user-images.githubusercontent.com/61794638/194844004-5d7d58ae-c522-4c65-abae-cde8d17d2c49.png)
+####Скриншоты с демонтрацией кода для вызова звука в Unity
+![изображение](https://user-images.githubusercontent.com/61794638/195159382-65a1965f-ec9d-478b-bc88-de110e7053d8.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195159425-2b5369d7-5b02-458c-bfa5-72404dacee0a.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195159470-7fd5bc27-52f9-4fc4-82ff-ab381f22b441.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195159488-52901f63-7072-4f73-901f-07878a11c171.png)
+####Скриншот с демонтрацией работы в Unity
+![изображение](https://user-images.githubusercontent.com/61794638/195159790-4c51e7fe-6b4b-4660-98e6-b200a7208456.png)
+
 
 
 ## Задание 2
