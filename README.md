@@ -46,105 +46,16 @@
 
 
 ## Задание 2
-### 
-Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+### Реализовать запись в Google-таблицу набора данных, полученных с помощью линейной регрессии из лабораторной работы № 1. 
 Скриншоты выполнения:
-import numpy as np
-import gspread
-import numpy as np
+![изображение](https://user-images.githubusercontent.com/61794638/195163635-5b6c8568-34a6-472c-be28-a56fc4d70633.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195163669-0721acc3-fde6-4e52-86da-ab1f16230c1b.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195163697-bf0c0a33-7a05-42c1-8399-76295e39a7a7.png)
+![изображение](https://user-images.githubusercontent.com/61794638/195163720-5fd8ddad-30e1-4258-805b-1005a1c537b6.png)
+Скриншот результата работы:
+![изображение](https://user-images.githubusercontent.com/61794638/195163825-6b987c29-1c21-4dc8-986a-20bd0cbcf693.png)
 
-gc = gspread.service_account(filename='unitydata-365217-b1abff74e3ad.json')
-sh = gc.open("Sheet1")
-
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
-
-def model(a,b,x):
-    return a*x+b
-def loss_function(a,b,x,y):
-    num = len(x)
-    prediction=model(a,b,x)
-    return (0.5/num)*(np.square(prediction-y)).sum()
-def optimaze(a,b,x,y):
-    num = len(x)
-    prediction=model(a,b,x)
-    da = (1.0/num)*((prediction-y)*x).sum()
-    db = (1.0/num)*((prediction-y)).sum()
-    a = a- Lr*da
-    b = b- Lr*db
-    return a,b
-def iterate(a,b,x,y,times):
-    for i in range(times):
-        a,b = optimaze(a,b,x,y)
-    return a,b
-
-a = np.random.rand(1)
-print(a)
-b = np.random.rand(1)
-print(b)
-Lr = 0.000001
-
-i=1
-
-a,b=iterate(a,b,x,y,1)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-a,b=iterate(a,b,x,y,2)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-a,b=iterate(a,b,x,y,3)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-a,b=iterate(a,b,x,y,4)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-a,b=iterate(a,b,x,y,5)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-a,b=iterate(a,b,x,y,1000)
-prediction = model(a,b,x)
-loss = loss_function(a,b,x,y)
-sh.sheet1.update(('A' + str(i)), str(a))
-sh.sheet1.update(('B' + str(i)), str(b))
-sh.sheet1.update(('C' + str(i)), str(loss))
-i = i+1
-
-
-## Задание 3
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
-Ответ: с каждой новой итерацией величина loss стремится к 0, это мы можем видеть на скриншоте ![изображение](https://user-images.githubusercontent.com/61794638/192373191-da677fff-1e64-4b0d-b141-c7cc00c954b3.png) , каждая итерация способствует изменению исходных значений, следовательно величина loss должна стремиться к нулю при изменении исходных данных 
-
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
-Ответ: параметр Lr нужен для определения шага при вычислении новых значений а и b при оптимизации. (Визуально увеличивает расстрояния между линиями итераций)
 
 ## Выводы
-В ходе данной работы я узнал что такой линейная регрессия, написал(переписал) код реализации линейной регрессии, ознакомился с работой в Unity, Jupyter и google.colab. 
+В ходе данной лабораторной работы я научился работе в связке Python - GoogleSheets - Unity, реализовал воспроизведение звука Unity в зависимости от значений в GoogleSheets, реализовал запись значений из первой лабораторной в таблицы.
 
